@@ -1,6 +1,6 @@
 /* CSS Variables & Reset */
 :root {
-    --bg-color: #010c18;
+    --bg-color: #00000000;
     --text-color: #ffffff;
     --accent-color: #000;
     --overlay-bg: rgba(1, 12, 24, 0.95);
@@ -256,4 +256,46 @@ footer {
 
     /* On mobile, maybe show caption always or differently? Keep hover for simplicity now, 
        but hover often maps to tap. */
+
+}
+
+html {
+    scroll-behavior: smooth;
+    cursor: none;
+    /* Hide default cursor */
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    mix-blend-mode: difference;
+}
+
+.custom-cursor.active {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: transparent;
+}
+
+/* Footer Animation */
+footer {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+footer.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
